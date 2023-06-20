@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Étape de construction de l'application
+                sh 'javac Main.java'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Étape de test de l'application
+                sh 'java Main'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Étape de déploiement de l'application
+                sh 'scp Main.class benji@localhost:8095'
+            }
+        }
+    }
+
+    post {
+        success {
+            // Actions à effectuer en cas de succès du pipeline
+            echo 'Le pipeline s\'est exécuté avec succès !'
+        }
+
+        failure {
+            // Actions à effectuer en cas d'échec du pipeline
+            echo 'Le pipeline a échoué. Vérifiez les journaux pour plus d\'informations.'
+        }
+    }
+}

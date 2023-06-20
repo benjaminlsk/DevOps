@@ -1,0 +1,17 @@
+{
+    "jenkins-runner.hostConfigs": {
+        "local": {
+            "url": "http://localhost:8090"
+        },
+        "local-secure": {
+            "url": "http://localhost:8090",
+            "user": "benji"
+        },
+        "master": {
+            "url": "http://jenkins.mycompany.com",
+            "user": "benji",
+            "password": "password"
+        }
+    }
+    
+}
